@@ -7,7 +7,6 @@ import { AppComponent } from './core/components/app.component';
 import { SharedModule } from './shared/shared.module';
 import { CatalogMoviesModule } from './catalog-movies/catalog-movies.module';
 import { ModalComponent } from './shared/components/modal/modal.component';
-import { FilterPipe } from './shared/pipes/filter.pipe';
 import { CommonService } from './shared/services/common-service.service';
 import { Http } from '@angular/http';
 

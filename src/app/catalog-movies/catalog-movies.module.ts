@@ -10,7 +10,6 @@ import { MoviesItemComponent } from './components/movies-item/movies-item.compon
 import { CommonModule } from '@angular/common';
 import { MoviesService } from './services/movies.service';
 import { CategoriesService } from './services/categories.service';
-import { FilterPipe } from '../shared/pipes/filter.pipe';
 
 
 @NgModule({
@@ -18,8 +17,7 @@ import { FilterPipe } from '../shared/pipes/filter.pipe';
       MoviesListComponent,
       MoviesRootComponent,
       MoviesItemDetailsComponent,
-      MoviesItemComponent,
-      FilterPipe
+      MoviesItemComponent
       ],
       imports: [
         HttpModule,

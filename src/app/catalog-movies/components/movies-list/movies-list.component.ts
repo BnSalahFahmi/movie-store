@@ -28,7 +28,7 @@ import { error } from 'selenium-webdriver';
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9" style="display: flex !important;margin-top: 19px;
     flex-wrap: wrap;">
-    <app-movie-item *ngFor="let movie of movies" [movie]="movie"></app-movie-item>
+    <app-movie-item *ngFor="let movie of movies | filter:filterQuery" [movie]="movie"></app-movie-item>
     </div>
 </div>
 <mat-progress-spinner *ngIf="loading" class="spinner" color="primary" mode="indeterminate" value="50"></mat-progress-spinner>
