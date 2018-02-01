@@ -30,7 +30,7 @@ export class SeriesListComponent implements OnInit {
         this.series = data;
       },
       (err) => {
-        console.log(err);
+
       }
     );
     this.commonService.filterListener.subscribe(

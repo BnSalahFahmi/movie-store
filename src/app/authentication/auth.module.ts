@@ -25,7 +25,7 @@ import { SignupComponent } from './components/signup/signup.component';
     authenticationRoutingModule
   ],
   providers:[
-      AuthenticationService
+      
   ]
 })
 export class AuthenticationModule{

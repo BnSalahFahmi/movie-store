@@ -4,6 +4,7 @@ import { Movie } from './../models/Movie.model';
 import { CommonService } from '../../shared/services/common-service.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
+import { AuthenticationService } from '../../authentication/services/authentication.service';
 
 const url = "https://movies-store-54267.firebaseio.com";
 
@@ -14,9 +15,10 @@ export class MoviesService {
     indexOfManipulatorUpdate = new EventEmitter<number>();
     private movies: Movie[];
 
-    constructor(private commonService: CommonService, private http: Http) {
+    constructor(private commonService: CommonService, private http: Http, private authService: AuthenticationService) {
         // keep in cache the last result  
-        this.http.get(url + '/movies.json').subscribe(
+        let token = this.authService.getToken();
+        this.http.get(url + '/movies.json?auth='+ token).subscribe(
             (response) => {
                 this.movies = response.json();
             }
@@ -24,7 +26,8 @@ export class MoviesService {
     }
 
     fetchMovies() {
-        return this.http.get(url + '/movies.json').map(response => response.json());
+        let token = this.authService.getToken();
+        return this.http.get(url + '/movies.json?auth='+ token).map(response => response.json());
     }
 
     setIndexOfMovieToManipulate(index: number) {

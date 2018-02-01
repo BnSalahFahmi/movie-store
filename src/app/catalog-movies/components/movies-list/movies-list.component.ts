@@ -17,6 +17,12 @@ import { error } from 'selenium-webdriver';
                 <mat-card-title><i class="material-icons" style="margin-right: 5px;">list</i> Catégories</mat-card-title>
             </mat-card-header>
             <mat-card-content>
+            <ul class="list-group" (click)="setSelectedCateg(0)">
+            <li class="list-group-item d-flex justify-content-between align-items-center active" [class.active]="0 === selectedCateg" (click)="getFilmsByCateg('All')">
+                All
+                <span class="badge badge-primary">{{getNumberByCateg('All')}}</span>
+            </li>
+            </ul>
                 <ul class="list-group" *ngFor="let categ of categories; let i : index" (click)="setSelectedCateg(i)">
                     <li class="list-group-item d-flex justify-content-between align-items-center" [class.active]="i === selectedCateg" (click)="getFilmsByCateg(categ)">
                         {{categ}}
@@ -120,10 +126,10 @@ export class MoviesListComponent implements OnInit {
         this.movies = movies
       },
       (error) => {
-        this.loading = false;
-        console.log('error');
+       
       }
     )
+    this.selectedCateg = 0;
     this.categories = this.categoriesService.getCategories();
     this.commonService.filterListener.subscribe(
       (newQuery: string) => {

@@ -16,7 +16,10 @@ import { MoviesService } from '../../services/movies.service';
               {{movie.title}}
             </b>
           </p>
-          <p> <b>By : </b> {{movie.actors[0].lastname}} {{movie.actors[0].firstname}} </p>
+          <b>By : </b> 
+          <i *ngFor="let actor of movie.actors">
+          {{actor}} 
+          </i>
           <p><b>Price : </b> {{movie.price}}</p>
           <p><b>Youtube views : </b>{{movie.youtubeViews}}</p>
           <p>{{movie.likes}}</p>

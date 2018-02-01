@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, Validators, NgForm} from '@angular/forms';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-signin',
   template: `
-  <mat-card class="example-card login-card">
+  <mat-card class="example-card signin-card">
+  <form (ngSubmit)="onSignIn(f)" #f="ngForm"> 
     <mat-card-header>
       <mat-card-title>Authentication </mat-card-title>
       <div class="rightActions" style="right: 18px;position: absolute;top: 4px;">
@@ -23,25 +26,28 @@ import { Component, OnInit } from '@angular/core';
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
-        <mat-label>Login</mat-label>
-        <input matInput placeholder="Tape your login" required>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Tape your Email" name="email" ngModel required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Tape your password" required>
+        <input matInput placeholder="Tape your password" name="password" ngModel required #password="ngModel">
+        <mat-error *ngIf="password.invalid">The password is mandatory</mat-error>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button mat-raised-button color="primary">LOGIN</button>
-      <button mat-button mat-raised-button color="warn">SUBSCRIBE</button>
+      <button mat-button type="submit" mat-raised-button color="primary" [disabled]='!f.valid'>SIGN IN</button>
+      <button mat-button mat-raised-button color="warn" routerLink="signup">SIGN UP</button>
     </mat-card-actions>
+    </form>
   </mat-card>
   `,
   styles: [`
   mat-form-field{
     width: 49%;
 }
-.login-card {
+.signin-card {
     width: 54%;
     margin: 15px;
     position: absolute;
@@ -70,9 +76,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) { }
+
+  email = new FormControl('', [Validators.required, Validators.email])
 
   ngOnInit() {
   }
 
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+        this.email.hasError('email') ? 'Not a valid email' :
+            '';
+  }
+
+  onSignIn(form: NgForm){
+    let value = form.value;
+    this.authenticationService.signInUser(value.email, value.password);
+  }
 }

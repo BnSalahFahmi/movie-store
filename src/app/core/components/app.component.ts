@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,12 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   
+  ngOnInit(){
+    firebase.initializeApp({
+      apiKey: "AIzaSyBtbIjBSEeHZ07v7IMcjmlMlatVASoxQXc",
+      authDomain: "movies-store-54267.firebaseapp.com",
+    });
+  }
 }

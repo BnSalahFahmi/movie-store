@@ -3,7 +3,6 @@ import { Movie } from './../models/Movie.model';
 
 export class CategoriesService {
     private catégories = [
-    'All',
     'Action',
     'Aventures',
     'Horror',

@@ -3,6 +3,7 @@ import { Serie } from './../models/Serie.model';
 import { Http } from '@angular/http';
 import { CommonService } from '../../shared/services/common-service.service';
 import 'rxjs/Rx';
+import { AuthenticationService } from '../../authentication/services/authentication.service';
 
 const url = "https://movies-store-54267.firebaseio.com";
 
@@ -12,9 +13,10 @@ export class SeriesService {
     indexOfManipulatorUpdate = new EventEmitter<number>();
     private series: Serie[];
 
-    constructor(private commonService: CommonService, private http: Http) {
+    constructor(private commonService: CommonService, private http: Http, private authService: AuthenticationService) {
         // keep in cache the last result  
-        this.http.get(url + '/series.json').subscribe(
+        let token = this.authService.getToken();
+        this.http.get(url + '/series.json?auth='+token).subscribe(
             (response) => {
                 this.series = response.json();
             }
@@ -22,7 +24,8 @@ export class SeriesService {
     }
 
     getSeries(){
-        return this.http.get(url + '/series.json').map(response => response.json());
+        let token = this.authService.getToken();
+        return this.http.get(url + '/series.json?auth='+token).map(response => response.json());
     }
 
     setIndexOfSerieToManipulate(index: number){

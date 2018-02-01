@@ -9,6 +9,7 @@ import { CatalogMoviesModule } from './catalog-movies/catalog-movies.module';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { CommonService } from './shared/services/common-service.service';
 import { Http } from '@angular/http';
+import { AuthenticationService } from './authentication/services/authentication.service';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { Http } from '@angular/http';
 
   ],
   providers: [
-    CommonService
+    CommonService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent]

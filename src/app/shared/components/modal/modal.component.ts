@@ -3,8 +3,17 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css']
+  template: `
+  <h2 mat-dialog-title>{{title}}</h2>
+  <mat-dialog-content>{{content}}</mat-dialog-content>
+  <mat-dialog-actions>
+  <h5>
+    {{msg}}
+  </h5>
+  <button mat-button [mat-dialog-close]="true">Ok</button>
+  </mat-dialog-actions>
+  `,
+  styles: []
 })
 export class ModalComponent implements OnInit{
 

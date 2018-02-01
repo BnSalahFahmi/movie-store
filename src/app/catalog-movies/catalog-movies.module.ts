@@ -10,6 +10,7 @@ import { MoviesItemComponent } from './components/movies-item/movies-item.compon
 import { CommonModule } from '@angular/common';
 import { MoviesService } from './services/movies.service';
 import { CategoriesService } from './services/categories.service';
+import { AuthenticationService } from '../authentication/services/authentication.service';
 
 
 @NgModule({
