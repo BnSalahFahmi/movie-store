@@ -2,6 +2,10 @@
 
 The aim of this project is to build a modular and scalable application using Angular. 
 
+## Application Home Page 
+
+ ![alt text](documentation/demo.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0.
 
 Technology Stack : 
