@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MoviesRootComponent } from './components/movies-root/movies-root.component';
-import { MoviesListComponent } from './components/movies-list/movies-list.component';
-import { MoviesItemDetailsComponent } from './components/movies-item-details/movies-item-details.component';
+import { MovieRootComponent } from './components/movie-root/movie-root.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { MovieItemDetailsComponent } from './components/movie-item-details/movie-item-details.component';
 
 
 const appRoutes: Routes = [
     {
-        path: '', component: MoviesRootComponent,
+        path: '', component: MovieRootComponent,
         children: [
-            { path: 'list', component: MoviesListComponent },
-            { path: 'movies/:id', component: MoviesItemDetailsComponent },
+            { path: 'list', component: MovieListComponent },
+            { path: 'movies/:id', component: MovieItemDetailsComponent },
             { path: '', redirectTo: 'list', pathMatch:'full' }
         ]
     }

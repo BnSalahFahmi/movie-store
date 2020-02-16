@@ -4,22 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { CatalogSeriesRoutingModule } from './catalog-series-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { CommonModule } from '@angular/common';
-import { SerieDetailsComponent } from './components/series-item-details/series-item-details.component';
-import { SerieItemComponent } from './components/series-item/series-item.component';
-import { SeriesRootComponent } from './components/series-root/series-root.component';
-import { SeriesListComponent } from './components/series-list/series-list.component';
+import { SerieDetailsComponent } from './components/serie-item-details/serie-item-details.component';
+import { SerieItemComponent } from './components/serie-item/serie-item.component';
+import { SerieRootComponent } from './components/serie-root/serie-root.component';
+import { SerieListComponent } from './components/serie-list/serie-list.component';
 import { SeriesService } from './services/series.service';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
-      SeriesRootComponent, 
-      SeriesListComponent, 
-      SerieItemComponent, 
+      SerieRootComponent,
+      SerieListComponent,
+      SerieItemComponent,
       SerieDetailsComponent
       ],
       imports: [
-        HttpModule,
+        HttpClientModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,

@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Serie } from '../../models/Serie.model';
-import { ActivatedRoute } from '@angular/router';
 import { SeriesService } from '../../services/series.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-series-item-details',
+  selector: 'app-serie-details',
   template: `
-  <mat-card class="example-card" style="margin: 10px">
+  <div class="example-card" style="margin: 10px">
   <mat-card-content>
     <div class="row">
 
@@ -16,11 +16,9 @@ import { SeriesService } from '../../services/series.service';
             {{serie.title}}
           </b>
         </p>
-        <p> <b>By : </b> {{serie.actors[0].lastname}} {{serie.actors[0].firstname}} </p>
+        
         <p><b>Price : </b> {{serie.price}}</p>
         <p><b>Youtube views : </b>{{serie.youtubeViews}}</p>
-        <p>{{serie.likes}}</p>
-        <p>{{serie.dislikes}}</p>
         <p>
           {{serie.description}}
         </p>
@@ -31,13 +29,16 @@ import { SeriesService } from '../../services/series.service';
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button mat-raised-button color="primary" routerLink="../../list">TRAILER PHOTOS</button>
-    <button mat-button mat-raised-button>ADD TO CHART</button>
-    <button mat-button mat-raised-button routerLink="../../list" style="float: right; margin-right: 25px">RETURN</button>
+    <button mat-stroked-button color="primary">TRAILER PHOTOS</button>
+    <button mat-stroked-button color="primary">ADD TO MY CART</button>
+    <button mat-stroked-button routerLink="../../list" style="float: right; margin-right: 25px">RETURN</button>
   </mat-card-actions>
-</mat-card>
+</div>
   `,
   styles: [`
+  .example-card {
+    padding: 10px;
+  }
   .card-image{
     height: 150px !important;
     width: 120px !important;
@@ -50,11 +51,12 @@ import { SeriesService } from '../../services/series.service';
 })
 export class SerieDetailsComponent implements OnInit {
 
-  @Input('serie') serie: Serie;
+  @Input() serie: Serie;
+
   constructor(private route: ActivatedRoute, private seriesService: SeriesService) { }
 
   ngOnInit() {
-    let name = this.route.snapshot.params['id'];
+    const name = this.route.snapshot.params['id'];
     this.serie = this.seriesService.findSerieByName(name);
   }
 

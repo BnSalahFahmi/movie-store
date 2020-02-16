@@ -1,6 +1,6 @@
-import { EventEmitter } from '@angular/core';
-import { Movie } from './../models/Movie.model';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class CategoriesService {
     private catégories = [
     'Action',

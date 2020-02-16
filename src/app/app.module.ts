@@ -5,10 +5,8 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './core/components/app.component';
 import { SharedModule } from './shared/shared.module';
-import { CatalogMoviesModule } from './catalog-movies/catalog-movies.module';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { CommonService } from './shared/services/common-service.service';
-import { Http } from '@angular/http';
 import { AuthenticationService } from './authentication/services/authentication.service';
 
 
@@ -21,7 +19,6 @@ import { AuthenticationService } from './authentication/services/authentication.
     AppRoutingModule,
     CoreModule.forRoot(),
     SharedModule
-
   ],
   providers: [
     CommonService,

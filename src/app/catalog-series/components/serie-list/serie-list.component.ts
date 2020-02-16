@@ -1,24 +1,28 @@
-import { Component, OnInit , AfterViewInit} from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Serie } from '../../models/Serie.model';
 import { SeriesService } from '../../services/series.service';
 import { CommonService } from '../../../shared/services/common-service.service';
 
 @Component({
-  selector: 'app-series-list',
+  selector: 'app-serie-list',
   template: `
-  <div class="">
+  <div class="series-container">
     <div class="col-lg-12 col-md-12 col-sm-12" style="display: flex !important;margin-top: 19px;
     flex-wrap: wrap;">
-        <app-series-item *ngFor="let serie of series | filter:filterQuery" [serie]="serie"></app-series-item>
+        <app-serie-item *ngFor="let serie of series | filter:filterQuery" [serie]="serie"></app-serie-item>
     </div>
   </div> 
-  <mat-progress-spinner *ngIf="loading" class="spinner" color="primary" mode="indeterminate" value="50"></mat-progress-spinner>
+  <mat-progress-spinner *ngIf="loading" class="spinner" color="primary" mode="indeterminate" strokeWidth="2" [diameter]="50" value="50"></mat-progress-spinner>
   `,
-  styles: ['']
+  styles: [`
+  .series-container {
+    display: flex;
+  }
+  `]
 })
-export class SeriesListComponent implements OnInit {
+export class SerieListComponent implements OnInit {
 
-  series : Serie[];
+  series: Serie[];
   loading: boolean = true;
   filterQuery: string;
   constructor(private seriesService: SeriesService, private commonService: CommonService) { }
@@ -39,7 +43,5 @@ export class SeriesListComponent implements OnInit {
       }
     )
   }
-
-
 }
 

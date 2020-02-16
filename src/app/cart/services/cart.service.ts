@@ -1,6 +1,7 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Movie } from './../models/Movie.model';
 
+@Injectable()
 export class CartService {
     private indexOfactorToManipulate: number = 1;
     indexOfManipulatorUpdate = new EventEmitter<number>();

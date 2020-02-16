@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal',
@@ -7,9 +7,6 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
   <h2 mat-dialog-title>{{title}}</h2>
   <mat-dialog-content>{{content}}</mat-dialog-content>
   <mat-dialog-actions>
-  <h5>
-    {{msg}}
-  </h5>
   <button mat-button [mat-dialog-close]="true">Ok</button>
   </mat-dialog-actions>
   `,

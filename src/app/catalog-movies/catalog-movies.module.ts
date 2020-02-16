@@ -1,32 +1,33 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CatalogMoviesRoutingModule } from './catalog-movies-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { MoviesListComponent } from './components/movies-list/movies-list.component';
-import { MoviesRootComponent } from './components/movies-root/movies-root.component';
-import { MoviesItemDetailsComponent } from './components/movies-item-details/movies-item-details.component';
-import { MoviesItemComponent } from './components/movies-item/movies-item.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { MovieRootComponent } from './components/movie-root/movie-root.component';
+import { MovieItemDetailsComponent } from './components/movie-item-details/movie-item-details.component';
+import { MovieItemComponent } from './components/movie-item/movie-item.component';
+import { MovieTrailerComponent } from './components/movie-trailer/movie-trailer.component';
 import { CommonModule } from '@angular/common';
 import { MoviesService } from './services/movies.service';
 import { CategoriesService } from './services/categories.service';
-import { AuthenticationService } from '../authentication/services/authentication.service';
 
 
 @NgModule({
     declarations: [
-      MoviesListComponent,
-      MoviesRootComponent,
-      MoviesItemDetailsComponent,
-      MoviesItemComponent
+      MovieListComponent,
+      MovieRootComponent,
+      MovieItemDetailsComponent,
+      MovieItemComponent,
+      MovieTrailerComponent
       ],
       imports: [
-        HttpModule,
+        HttpClientModule,
         CommonModule,
+        SharedModule,
         FormsModule,
         ReactiveFormsModule,
-        CatalogMoviesRoutingModule,
-        SharedModule
+        CatalogMoviesRoutingModule
       ],
       exports: [
         CatalogMoviesRoutingModule
@@ -35,7 +36,7 @@ import { AuthenticationService } from '../authentication/services/authentication
         MoviesService,
         CategoriesService
       ]
-})                 
+}) 
 export class CatalogMoviesModule {
 
 }

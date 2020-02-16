@@ -1,8 +1,9 @@
+
+import { map } from 'rxjs/operators';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Serie } from './../models/Serie.model';
-import { Http } from '@angular/http';
-import { CommonService } from '../../shared/services/common-service.service';
-import 'rxjs/Rx';
+import { HttpClient } from '@angular/common/http';
+import { CommonService } from '../../shared/services/common-service.service';;
 import { AuthenticationService } from '../../authentication/services/authentication.service';
 
 const url = "https://movies-store-54267.firebaseio.com";
@@ -13,43 +14,43 @@ export class SeriesService {
     indexOfManipulatorUpdate = new EventEmitter<number>();
     private series: Serie[];
 
-    constructor(private commonService: CommonService, private http: Http, private authService: AuthenticationService) {
+    constructor(private commonService: CommonService, private http: HttpClient, private authService: AuthenticationService) {
         // keep in cache the last result  
         let token = this.authService.getToken();
-        this.http.get(url + '/series.json?auth='+token).subscribe(
+        this.http.get<Serie[]>(url + '/series.json?auth=' + token).subscribe(
             (response) => {
-                this.series = response.json();
+                this.series = response;
             }
         )
     }
 
-    getSeries(){
+    getSeries() {
         let token = this.authService.getToken();
-        return this.http.get(url + '/series.json?auth='+token).map(response => response.json());
+        return this.http.get<Serie[]>(url + '/series.json?auth=' + token).pipe(map(response => response));
     }
 
-    setIndexOfSerieToManipulate(index: number){
+    setIndexOfSerieToManipulate(index: number) {
         this.indexOfactorToManipulate = index;
         this.indexOfManipulatorUpdate.emit(index);
     }
 
-    getIndexOfMovieToManipulate(){
+    getIndexOfMovieToManipulate() {
         return this.indexOfactorToManipulate;
     }
 
-    findSerieByName(name : string){
-        for(let serie of this.series){
-            if(name == serie.title){
+    findSerieByName(name: string) {
+        for (let serie of this.series) {
+            if (name == serie.title) {
                 return serie;
             }
         }
     }
 
-    getSerieRatesStars(serie: Serie){
+    getSerieRatesStars(serie: Serie) {
         return serie.rating;
     }
 
-    getSerieNonRatesStars(serie: Serie){
+    getSerieNonRatesStars(serie: Serie) {
         return 5 - serie.rating;
     }
 

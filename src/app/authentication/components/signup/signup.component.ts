@@ -9,20 +9,6 @@ import { AuthenticationService } from '../../services/authentication.service';
   <form (ngSubmit)="onSignUp(f)" #f="ngForm">
     <mat-card-header>
       <mat-card-title>Authentication </mat-card-title>
-      <div class="rightActions" style="right: 18px;position: absolute;top: 4px;">
-        <button mat-button mat-icon-button>
-          <i class="material-icons">open_in_browser</i>
-        </button>
-        <button mat-button mat-icon-button>
-          <i class="material-icons">open_in_new</i>
-        </button>
-        <button mat-button mat-icon-button>
-          <i class="material-icons">open_with</i>
-        </button>
-        <button mat-button mat-icon-button>
-          <i class="material-icons">settings</i>
-        </button>
-      </div>
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
@@ -37,8 +23,8 @@ import { AuthenticationService } from '../../services/authentication.service';
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button type="submit" mat-button mat-raised-button color="primary" [disabled]='!f.valid'>SIGN UP</button>
-      <button type="button" mat-button mat-raised-button color="warn" routerLink="/..">SIGN IN</button>
+      <button type="submit" mat-stroked-button color="primary">SIGN UP</button>
+      <button type="button" mat-stroked-button color="warn" routerLink="/..">SIGN IN</button>
     </mat-card-actions>
     </form>
   </mat-card>
@@ -72,6 +58,9 @@ import { AuthenticationService } from '../../services/authentication.service';
     font-size: 16px;
    }
 
+   mat-form-field {
+     margin: 0px 2px !important;
+   }
    
   `]
 })

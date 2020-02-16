@@ -1,25 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LogoComponent } from './core/components/logo/logo.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
-
 const appRoutes: Routes = [
-    {path: '', redirectTo: 'signin', pathMatch:'full'},
-    {path: 'catalog-movies', loadChildren:'app/catalog-movies/catalog-movies.module#CatalogMoviesModule'},
-    {path: 'catalog-series', loadChildren:'app/catalog-series/catalog-series.module#CatalogSeriesModule'},
-    {path: 'cart', loadChildren:'app/cart/cart.module#CartModule'},
-    {path: 'signin', loadChildren:'app/authentication/auth.module#AuthenticationModule'},
-    // Catch any other routes and redirect them to pageNOtFound component
-    {path: 'not-found', component: PageNotFoundComponent},
-    {path:'**', redirectTo:'not-found'}
-
+    { path: '', redirectTo: 'signin', pathMatch: 'full' },
+    { path: 'catalog-movies', loadChildren: () => import('./catalog-movies/catalog-movies.module').then(m => m.CatalogMoviesModule) },
+    { path: 'catalog-series', loadChildren: () => import('./catalog-series/catalog-series.module').then(m => m.CatalogSeriesModule) },
+    { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
+    { path: 'signin', loadChildren: () => import('./authentication/auth.module').then(m => m.AuthenticationModule) },
+    { path: 'not-found', component: PageNotFoundComponent },
+    { path: '**', redirectTo: 'not-found' }
 ]
 
 @NgModule({
-    imports: [ RouterModule.forRoot(appRoutes) ],
+    imports: [RouterModule.forRoot(appRoutes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule{
+export class AppRoutingModule {
 
 }

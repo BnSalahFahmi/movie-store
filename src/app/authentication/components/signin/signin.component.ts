@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators, NgForm} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
@@ -9,22 +9,11 @@ import { AuthenticationService } from '../../services/authentication.service';
   <form (ngSubmit)="onSignIn(f)" #f="ngForm"> 
     <mat-card-header>
       <mat-card-title>Authentication </mat-card-title>
-      <div class="rightActions" style="right: 18px;position: absolute;top: 4px;">
-        <button mat-button mat-icon-button>
-          <i class="material-icons">open_in_browser</i>
-        </button>
-        <button mat-button mat-icon-button>
-          <i class="material-icons">open_in_new</i>
-        </button>
-        <button mat-button mat-icon-button>
-          <i class="material-icons">open_with</i>
-        </button>
-        <button mat-button mat-icon-button>
-          <i class="material-icons">settings</i>
-        </button>
-      </div>
     </mat-card-header>
     <mat-card-content>
+    <div class="alert alert-primary" role="alert">
+        To sign in please use these credentials : admin@gmail.com / admin1234
+    </div>
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput placeholder="Tape your Email" name="email" ngModel required>
@@ -33,12 +22,12 @@ import { AuthenticationService } from '../../services/authentication.service';
       <mat-form-field>
         <mat-label>Password</mat-label>
         <input matInput placeholder="Tape your password" name="password" ngModel required #password="ngModel">
-        <mat-error *ngIf="password.invalid">The password is mandatory</mat-error>
+        <mat-error *ngIf="password.invalid">You must enter a password</mat-error>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button type="submit" mat-raised-button color="primary" [disabled]='!f.valid'>SIGN IN</button>
-      <button mat-button mat-raised-button color="warn" routerLink="signup">SIGN UP</button>
+      <button mat-stroked-button color="primary" type="submit">SIGN IN</button>
+      <button mat-stroked-button color="warn" routerLink="signup">SIGN UP</button>
     </mat-card-actions>
     </form>
   </mat-card>
@@ -72,6 +61,9 @@ import { AuthenticationService } from '../../services/authentication.service';
     font-size: 16px;
    }
    
+   mat-form-field {
+    margin: 0px 2px !important;
+  }
   `]
 })
 export class SigninComponent implements OnInit {
@@ -85,11 +77,11 @@ export class SigninComponent implements OnInit {
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
-            '';
+      this.email.hasError('email') ? 'Not a valid email' :
+        '';
   }
 
-  onSignIn(form: NgForm){
+  onSignIn(form: NgForm) {
     let value = form.value;
     this.authenticationService.signInUser(value.email, value.password);
   }

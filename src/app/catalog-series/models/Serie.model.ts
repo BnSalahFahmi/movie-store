@@ -1,8 +1,6 @@
 /**
  * Contract of a Serie
  * 
- * @export
- * @class Serie
  */
 export interface Serie {
     title: string;

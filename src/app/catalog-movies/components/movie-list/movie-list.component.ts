@@ -3,14 +3,12 @@ import { Movie } from '../../models/Movie.model';
 import { MoviesService } from './../../services/movies.service';
 import { CategoriesService } from './../../services/categories.service';
 import { CommonService } from '../../../shared/services/common-service.service';
-import { Observable } from 'rxjs/Observable';
-import { error } from 'selenium-webdriver';
 
 
 @Component({
-  selector: 'app-movies-list',
+  selector: 'app-movie-list',
   template: `
-  <div class="" *ngIf='movies'>
+  <div class="row col-lg-12" *ngIf='movies'>
     <div class="col-lg-3 col-md-3 col-sm-3">
         <mat-card class="categ-card" style="margin-top: 20px;">
             <mat-card-header>
@@ -37,7 +35,7 @@ import { error } from 'selenium-webdriver';
     <app-movie-item *ngFor="let movie of movies | filter:filterQuery" [movie]="movie"></app-movie-item>
     </div>
 </div>
-<mat-progress-spinner *ngIf="loading" class="spinner" color="primary" mode="indeterminate" value="50"></mat-progress-spinner>
+<mat-progress-spinner *ngIf="loading" class="spinner" color="primary" mode="indeterminate" strokeWidth="2" [diameter]="50" value="50"></mat-progress-spinner>
   `,
   styles: [`
   .example-container {
@@ -107,12 +105,13 @@ import { error } from 'selenium-webdriver';
 }
   `]
 })
-export class MoviesListComponent implements OnInit {
-  private movies: Movie[];
+export class MovieListComponent implements OnInit {
+  movies: Movie[];
   loading: boolean = true;
   categories: string[];
   selectedCateg = 0;
   filterQuery: string;
+
   constructor(
     private catalogService: MoviesService,
     private categoriesService: CategoriesService,
@@ -123,10 +122,10 @@ export class MoviesListComponent implements OnInit {
     this.catalogService.fetchMovies().subscribe(
       (movies) => {
         this.loading = false;
-        this.movies = movies
+        this.movies = movies;
       },
       (error) => {
-       
+
       }
     )
     this.selectedCateg = 0;

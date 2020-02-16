@@ -1,9 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './components/app.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -38,10 +36,10 @@ import { CoreService } from './services/core.service';
   ]
 })
 export class CoreModule { 
-    static forRoot() {
-        return {
-          ngModule: CoreModule,
-          providers: []
-        }
-      }
+    static forRoot(): ModuleWithProviders<CoreModule> {
+    return {
+        ngModule: CoreModule,
+        providers: []
+    };
+}
 }

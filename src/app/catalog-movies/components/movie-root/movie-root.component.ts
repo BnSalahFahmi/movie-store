@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-series-root',
+  selector: 'app-movie-root',
   template: '<router-outlet></router-outlet>',
-  styles: []
+  styles: ['']
 })
-export class SeriesRootComponent implements OnInit {
+export class MovieRootComponent implements OnInit {
 
   constructor() { }
 

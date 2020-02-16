@@ -1,9 +1,9 @@
+
+import { map } from 'rxjs/operators';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Movie } from './../models/Movie.model';
 import { CommonService } from '../../shared/services/common-service.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
 import { AuthenticationService } from '../../authentication/services/authentication.service';
 
 const url = "https://movies-store-54267.firebaseio.com";
@@ -15,19 +15,19 @@ export class MoviesService {
     indexOfManipulatorUpdate = new EventEmitter<number>();
     private movies: Movie[];
 
-    constructor(private commonService: CommonService, private http: Http, private authService: AuthenticationService) {
+    constructor(private commonService: CommonService, private http: HttpClient, private authService: AuthenticationService) {
         // keep in cache the last result  
         let token = this.authService.getToken();
-        this.http.get(url + '/movies.json?auth='+ token).subscribe(
+        this.http.get<Movie[]>(url + '/movies.json?auth=' + token).subscribe(
             (response) => {
-                this.movies = response.json();
+                this.movies = response;
             }
         )
     }
 
     fetchMovies() {
         let token = this.authService.getToken();
-        return this.http.get(url + '/movies.json?auth='+ token).map(response => response.json());
+        return this.http.get<Movie[]>(url + '/movies.json?auth=' + token).pipe(map(response => response));
     }
 
     setIndexOfMovieToManipulate(index: number) {

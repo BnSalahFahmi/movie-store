@@ -25,7 +25,7 @@ export class AuthenticationService {
     signInUser(email: string, password: string) {
         firebase.auth().signInWithEmailAndPassword(email, password).then(
             (response) => {
-                firebase.auth().currentUser.getToken().then(
+                firebase.auth().currentUser.getIdToken().then(
                     (token: string) => {
                         this.token = token;
                         this.router.navigate(['/catalog-movies/list']);
@@ -38,7 +38,7 @@ export class AuthenticationService {
     }
 
     getToken() {
-        firebase.auth().currentUser.getToken().then(
+        firebase.auth().currentUser.getIdToken().then(
             (token: string) => {
                 this.token = token;
             }
