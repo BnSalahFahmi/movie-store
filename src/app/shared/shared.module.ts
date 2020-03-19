@@ -54,7 +54,8 @@ import {
   faInfo,
   faQuestionCircle,
   faShoppingCart,
-  faCartPlus
+  faCartPlus,
+  faSpinner
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faGithub,
@@ -118,7 +119,8 @@ library.add(
   faInfo,
   faQuestionCircle,
   faShoppingCart,
-  faCartPlus
+  faCartPlus,
+  faSpinner
 );
 
 @NgModule({

@@ -22,7 +22,7 @@ import { AuthenticationService } from '../../services/authentication.service';
         <mat-error *ngIf="password.invalid">The password is mandatory</mat-error>
       </mat-form-field>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions align="end">
       <button type="submit" mat-stroked-button color="primary">SIGN UP</button>
       <button type="button" mat-stroked-button color="warn" routerLink="/..">SIGN IN</button>
     </mat-card-actions>
@@ -61,6 +61,15 @@ import { AuthenticationService } from '../../services/authentication.service';
    mat-form-field {
      margin: 0px 2px !important;
    }
+
+   mat-card-actions {
+    margin-right: 10px;
+  }
+
+   mat-card-actions button {
+    width: 120px;
+    outline: none;
+  }
    
   `]
 })

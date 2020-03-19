@@ -10,7 +10,7 @@ export interface Movie {
     youtubeViews: number;
     rating: number;
     imagePath: string;
-    categorie: string;
+    category: string;
     trailerPhotos: string[];
     runtime: string;
     comments: Comment[];

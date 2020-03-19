@@ -25,8 +25,11 @@ import { AuthenticationService } from '../../services/authentication.service';
         <mat-error *ngIf="password.invalid">You must enter a password</mat-error>
       </mat-form-field>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-stroked-button color="primary" type="submit">SIGN IN</button>
+    <mat-card-actions align="end">
+      <button mat-stroked-button color="primary" type="submit">
+        SIGN IN
+        <fa-icon class="spin" *ngIf="loading" icon="spinner" [spin]="true"></fa-icon>
+      </button>
       <button mat-stroked-button color="warn" routerLink="signup">SIGN UP</button>
     </mat-card-actions>
     </form>
@@ -64,9 +67,24 @@ import { AuthenticationService } from '../../services/authentication.service';
    mat-form-field {
     margin: 0px 2px !important;
   }
+
+  mat-card-actions {
+    margin-right: 10px;
+  }
+
+  mat-card-actions button {
+    width: 120px;
+    outline: none;
+  }
+
+  .spin {
+    margin-left: 2px;
+  }
   `]
 })
 export class SigninComponent implements OnInit {
+
+  loading = false;
 
   constructor(private authenticationService: AuthenticationService) { }
 
@@ -83,6 +101,10 @@ export class SigninComponent implements OnInit {
 
   onSignIn(form: NgForm) {
     let value = form.value;
-    this.authenticationService.signInUser(value.email, value.password);
+    if(form) {
+        this.loading = true;
+        this.authenticationService.signInUser(value.email, value.password);
+    }
+    
   }
 }

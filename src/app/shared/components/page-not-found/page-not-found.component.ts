@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page-not-found',
-  template: '<img src="../../../assets/404.jpg" alt="Page not found">',
+  template: '<img src="assets/404.jpg" alt="Page not found">',
   styles: [`
   img{
     position: absolute;

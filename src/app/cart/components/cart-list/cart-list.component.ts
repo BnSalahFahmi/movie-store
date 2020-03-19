@@ -9,15 +9,17 @@ import { Movie } from '../../models/Movie.model';
     <app-cart-item *ngFor="let movie of movies" [movie]="movie"></app-cart-item>
   </div>
   <ng-template #empty>
-    <img class="empty-card" src="./../../../assets/empty-card.png" alt="empty card">
+    <img class="empty-card" src="assets/empty-card.png" alt="empty card">
   </ng-template>
   `,
   styles: [`
   .empty-card{
-    left: 35%;
-    right: 25%;
     position: absolute;
-    top: 30%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
   `]
 })

@@ -9,6 +9,8 @@ export interface Serie {
     price: number;
     youtubeViews: number;
     rating: number;
+    releaseDate: string;
+    category: string;
     imagePath: string;
     numberOfEpisodes: number;
     trailerPhotos: string[];
