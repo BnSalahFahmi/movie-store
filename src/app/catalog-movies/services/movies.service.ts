@@ -47,13 +47,13 @@ export class MoviesService {
         }
     }
 
-    getFilmsByCateg(categorie: string) {
-        if ('All' == categorie) {
+    getFilmsByCateg(category: string) {
+        if ('All' == category) {
             return this.movies;
         }
         let movies: Movie[] = [];
         for (let movie of this.movies) {
-            if (movie.categorie == categorie) {
+            if (movie.category == category) {
                 movies.push(movie);
             }
         }
@@ -66,7 +66,7 @@ export class MoviesService {
         }
         let number = 0;
         for (let movie of this.movies) {
-            if (categ == movie.categorie) {
+            if (categ == movie.category) {
                 number = number + 1;
             }
         }

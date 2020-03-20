@@ -141,8 +141,8 @@ export class MovieListComponent implements OnInit {
     this.selectedCateg = index;
   }
 
-  getFilmsByCateg(categorie: string) {
-    this.movies = this.catalogService.getFilmsByCateg(categorie);
+  getFilmsByCateg(category: string) {
+    this.movies = this.catalogService.getFilmsByCateg(category);
   }
 
   getNumberByCateg(categ: string) {

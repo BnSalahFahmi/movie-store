@@ -12,6 +12,7 @@ export interface Movie {
     imagePath: string;
     category: string;
     trailerPhotos: string[];
+    releaseDate: string;
     runtime: string;
     comments: Comment[];
 }
