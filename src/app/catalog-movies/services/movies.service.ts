@@ -3,7 +3,6 @@ import { map } from 'rxjs/operators';
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from './../models/Movie.model';
-import { CommonService } from '../../shared/services/common-service.service';
 import { AuthenticationService } from '../../authentication/services/authentication.service';
 
 const url = "https://movies-store-54267.firebaseio.com";
@@ -15,7 +14,7 @@ export class MoviesService {
     indexOfManipulatorUpdate = new EventEmitter<number>();
     private movies: Movie[];
 
-    constructor(private commonService: CommonService, private http: HttpClient, private authService: AuthenticationService) {
+    constructor(private http: HttpClient, private authService: AuthenticationService) {
         // keep in cache the last result  
         let token = this.authService.getToken();
         this.http.get<Movie[]>(url + '/movies.json?auth=' + token).subscribe(
@@ -47,13 +46,23 @@ export class MoviesService {
         }
     }
 
-    getFilmsByCateg(category: string) {
+    getMoviesByCateg(category: string) {
         if ('All' == category) {
             return this.movies;
         }
         let movies: Movie[] = [];
         for (let movie of this.movies) {
-            if (movie.category == category) {
+            if (movie.category.indexOf(category) != -1) {
+                movies.push(movie);
+            }
+        }
+        return movies;
+    }
+
+    getMoviesByName(query: string) {
+        let movies: Movie[] = [];
+        for (let movie of this.movies) {
+            if (movie.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) != -1) {
                 movies.push(movie);
             }
         }

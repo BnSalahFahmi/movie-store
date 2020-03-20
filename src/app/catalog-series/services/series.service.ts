@@ -3,7 +3,6 @@ import { map } from 'rxjs/operators';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Serie } from './../models/Serie.model';
 import { HttpClient } from '@angular/common/http';
-import { CommonService } from '../../shared/services/common-service.service';;
 import { AuthenticationService } from '../../authentication/services/authentication.service';
 
 const url = "https://movies-store-54267.firebaseio.com";
@@ -14,7 +13,7 @@ export class SeriesService {
     indexOfManipulatorUpdate = new EventEmitter<number>();
     private series: Serie[];
 
-    constructor(private commonService: CommonService, private http: HttpClient, private authService: AuthenticationService) {
+    constructor(private http: HttpClient, private authService: AuthenticationService) {
         // keep in cache the last result  
         let token = this.authService.getToken();
         this.http.get<Serie[]>(url + '/series.json?auth=' + token).subscribe(
@@ -52,6 +51,29 @@ export class SeriesService {
 
     getSerieNonRatesStars(serie: Serie) {
         return 5 - serie.rating;
+    }
+
+    getSeriesByCateg(category: string) {
+        if ('All' == category) {
+            return this.series;
+        }
+        let series: Serie[] = [];
+        for (let serie of this.series) {
+            if (serie.category.indexOf(category) != -1) {
+                series.push(serie);
+            }
+        }
+        return series;
+    }
+
+    getSeriesByName(query: string) {
+        let series: Serie[] = [];
+        for (let serie of this.series) {
+            if (serie.title.toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) != -1) {
+                series.push(serie);
+            }
+        }
+        return series;
     }
 
 }

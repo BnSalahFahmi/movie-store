@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CoreService } from './../../services/core.service';
 
 @Component({
   selector: 'app-header',
@@ -134,14 +133,9 @@ a:hover {
 })
 export class HeaderComponent implements OnInit {
 
-  filterQuery: string;
-  constructor(private coreService: CoreService) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  onSearch() {
-    this.coreService.pushQuery(this.filterQuery);
   }
 
 }

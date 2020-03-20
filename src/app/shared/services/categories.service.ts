@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class CategoriesService {
     private catégories = [
     'Action',
-    'adventures',
+    'Adventure',
     'Horror',
     'Comedy',
     'Documentary',
@@ -13,6 +13,12 @@ export class CategoriesService {
     'Historical',
     'Musical',
     'Disney',
+    'Mystery',
+    'Thriller',
+    'Fantasy',
+    'Crime',
+    'Biography',
+    'Romance'
     ];
     
     getCategories(){

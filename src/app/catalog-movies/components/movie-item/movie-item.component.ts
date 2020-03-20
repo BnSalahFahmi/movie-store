@@ -12,7 +12,6 @@ import { MoviesService } from '../../services/movies.service';
         <div class="d-flex flex-column justify-content-between media-overlay">
             <div class="media-overlay-header d-flex justify-content-between">
                 <strong>{{movie.price}}$</strong><strong>{{movie.releaseDate}}</strong> </div>
-            <div class="media-overlay-body d-flex justify-content-center flex-wrap"> <i class="fa fa-play"></i> </div>
             <div class="media-overlay-footer">
                 <h5>{{movie.title}}</h5>
                 <h5 class="categ">{{movie.category}}</h5>
@@ -42,6 +41,8 @@ import { MoviesService } from '../../services/movies.service';
   background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: .25rem;
+  transform: scale(1.02);
+  outline : none;
 }
 .media-card:hover .media-overlay  {
   opacity: 1 !important;

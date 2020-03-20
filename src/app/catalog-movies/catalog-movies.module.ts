@@ -10,8 +10,6 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { MovieTrailerComponent } from './components/movie-trailer/movie-trailer.component';
 import { CommonModule } from '@angular/common';
 import { MoviesService } from './services/movies.service';
-import { CategoriesService } from './services/categories.service';
-
 
 @NgModule({
     declarations: [
@@ -33,8 +31,7 @@ import { CategoriesService } from './services/categories.service';
         CatalogMoviesRoutingModule
       ],
       providers: [
-        MoviesService,
-        CategoriesService
+        MoviesService
       ]
 }) 
 export class CatalogMoviesModule {

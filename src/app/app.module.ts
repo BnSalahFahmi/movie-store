@@ -6,9 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './core/components/app.component';
 import { SharedModule } from './shared/shared.module';
 import { ModalComponent } from './shared/components/modal/modal.component';
-import { CommonService } from './shared/services/common-service.service';
 import { AuthenticationService } from './authentication/services/authentication.service';
-
 
 @NgModule({
   declarations: [
@@ -21,7 +19,6 @@ import { AuthenticationService } from './authentication/services/authentication.
     SharedModule
   ],
   providers: [
-    CommonService,
     AuthenticationService
   ],
   bootstrap: [AppComponent],

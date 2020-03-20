@@ -10,6 +10,7 @@ import { SerieRootComponent } from './components/serie-root/serie-root.component
 import { SerieListComponent } from './components/serie-list/serie-list.component';
 import { SeriesService } from './services/series.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoriesService } from '../shared/services/categories.service';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
         CatalogSeriesRoutingModule
       ],
       providers: [
-        SeriesService
+        SeriesService,
+        CategoriesService
       ]
 })                 
 export class CatalogSeriesModule {

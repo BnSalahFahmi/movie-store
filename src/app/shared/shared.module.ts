@@ -64,6 +64,7 @@ import {
   faInstagram,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
+import { CategoriesService } from './services/categories.service';
 library.add(
   faBars,
   faUserCircle,
@@ -134,7 +135,9 @@ library.add(
         FontAwesomeModule,
         FilterPipe
       ],
-      providers: []
+      providers: [
+        CategoriesService
+      ]
 })                 
 export class SharedModule {
 
