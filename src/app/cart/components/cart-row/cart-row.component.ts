@@ -7,7 +7,8 @@ import { CartService } from '../../services/cart.service';
     selector: '[app-cart-row]',
     template: `
      <td class="align-middle"><img src="{{row.imagePath}}"/></td>
-     <td class="align-middle"><a href="#">{{row.title}}</a></td>
+     <td class="align-middle" *ngIf="!row.numberOfEpisodes"><a routerLink="/catalog-movies/movies/{{ row.title }}">{{row.title}}</a></td>
+     <td class="align-middle" *ngIf="row.numberOfEpisodes"><a routerLink="/catalog-series/series/{{ row.title }}">{{row.title}}</a></td>
      <td class="align-middle">{{row.price}} €</td>
      <td class="align-middle">
      <button type="button" class="btn btn-outline-white btn-rounded btn-sm px-2" (click)="handleRemoveRowClick(row)">
