@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { CartItemComponent } from './components/cart-item/cart-item.component';
-import { CartListComponent } from './components/cart-list/cart-list.component';
-import { CartRootComponent } from './components/cart-root/cart-root.component';
 import { CartRoutingModule } from './cart-routing.model';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { CartService } from './services/cart.service';
+import { CartContentPageComponent } from './components/cart-content-page/cart-content-page.component';
+import { CartRowComponent } from './components/cart-row/cart-row.component';
+import { EmptyCartComponent } from './components/cart-empty.component';
+import { CartRootComponent } from './components/cart-root/cart-root.component';
 
 @NgModule({
     declarations: [
-        CartItemComponent,
-        CartListComponent,
-        CartRootComponent
+        CartRootComponent,
+        CartContentPageComponent,
+        CartRowComponent,
+        EmptyCartComponent
     ],
-    imports:[
+    imports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
@@ -26,9 +27,9 @@ import { CartService } from './services/cart.service';
         CartRoutingModule
     ],
     providers: [
-        CartService
+       
     ]
 })
-export class CartModule{
+export class CartModule {
 
 }

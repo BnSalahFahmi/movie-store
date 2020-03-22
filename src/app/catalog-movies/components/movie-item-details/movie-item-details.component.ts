@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/Movie.model';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/cart/services/cart.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -34,7 +35,7 @@ import { ActivatedRoute } from '@angular/router';
     </mat-card-content>
     <mat-card-actions>
       <button mat-stroked-button color="primary">TRAILER PHOTOS</button>
-      <button mat-stroked-button color="primary">ADD TO MY CART</button>
+      <button mat-stroked-button color="primary" (click)="handleAddToCartClick()">ADD TO MY CART</button>
       <button mat-stroked-button routerLink="../../list" style="float: right; margin-right: 25px">RETURN</button>
     </mat-card-actions>
   </div>
@@ -57,12 +58,16 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieItemDetailsComponent implements OnInit {
 
   movie: Movie;
-  
-  constructor(private route: ActivatedRoute, private catalogService: MoviesService) { }
+
+  constructor(private route: ActivatedRoute, private catalogService: MoviesService, private cartService: CartService) { }
 
   ngOnInit() {
     const name = this.route.snapshot.params['id'];
     this.movie = this.catalogService.findMovieByName(name);
+  }
+
+  handleAddToCartClick() {
+    this.cartService.addMovieToCart(this.movie);
   }
 
 }

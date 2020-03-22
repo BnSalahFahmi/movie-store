@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Serie } from '../../models/Serie.model';
 import { SeriesService } from '../../services/series.service';
 import { ActivatedRoute } from '@angular/router';
+import { CartService } from 'src/app/cart/services/cart.service';
 
 @Component({
   selector: 'app-serie-details',
@@ -30,7 +31,7 @@ import { ActivatedRoute } from '@angular/router';
   </mat-card-content>
   <mat-card-actions>
     <button mat-stroked-button color="primary">TRAILER PHOTOS</button>
-    <button mat-stroked-button color="primary">ADD TO MY CART</button>
+    <button mat-stroked-button color="primary" (click)="handleAddToCartClick()">ADD TO MY CART</button>
     <button mat-stroked-button routerLink="../../list" style="float: right; margin-right: 25px">RETURN</button>
   </mat-card-actions>
 </div>
@@ -53,11 +54,15 @@ export class SerieDetailsComponent implements OnInit {
 
   @Input() serie: Serie;
 
-  constructor(private route: ActivatedRoute, private seriesService: SeriesService) { }
+  constructor(private route: ActivatedRoute, private seriesService: SeriesService, private cartService: CartService) { }
 
   ngOnInit() {
     const name = this.route.snapshot.params['id'];
     this.serie = this.seriesService.findSerieByName(name);
+  }
+
+  handleAddToCartClick() {
+    this.cartService.addSerieToCart(this.serie);
   }
 
 }

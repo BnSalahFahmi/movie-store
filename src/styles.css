@@ -38,6 +38,31 @@ body{
     top: 36%;
     left: 45%;
 }
+button {
+    outline: none !important;
+}
+
+.toast-container .ngx-toastr {
+    padding: 20px 15px 20px 50px !important;
+    width: 400px !important;
+    font-size: 15px !important;
+    box-shadow: none !important;
+}
+
+.toast-success {
+    background-color: #00897bd9 !important;
+    border: 1px solid #00897b;
+}
+
+.toast-error {
+    background-color: #bd362ff2 !important;
+    border: 1px solid #bd362f;
+}
+
+.toast-info {
+    background-color: #2f96b4e8;
+    border: 1px solid #2f96b4;
+}
 /* Custom Scroll */
 ::-webkit-scrollbar {
     width: 5px;

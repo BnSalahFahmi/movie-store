@@ -65,6 +65,8 @@ import {
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 import { CategoriesService } from './services/categories.service';
+import { SuccessNotifToast } from './components/success-notif/success-notif.component';
+import { ErrorNotifToast } from './components/error-notif/error-notif.component';
 library.add(
   faBars,
   faUserCircle,
@@ -125,7 +127,7 @@ library.add(
 );
 
 @NgModule({
-    declarations: [PageNotFoundComponent, ModalComponent, FilterPipe],
+    declarations: [PageNotFoundComponent, ModalComponent, FilterPipe, SuccessNotifToast, ErrorNotifToast],
       imports: [
         AngularMaterialModule,
         FontAwesomeModule

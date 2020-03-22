@@ -25,10 +25,13 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-brands-svg-icons": "^5.9.0",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
+    "@ng-select/ng-select": "^3.7.3",
     "@ngrx/effects": "^8.6.0",
     "@ngrx/store": "^8.6.0",
     "bootstrap": "^4.4.1",
     "firebase": "^7.8.2",
+    "lodash-es": "^4.17.15",
+    "ngx-toastr": "^12.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

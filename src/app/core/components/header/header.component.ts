@@ -101,9 +101,21 @@ mat-sidenav {
 
 .mat-list-item {
     padding-left: 10px;
+    outline :none;
     &:hover {
         color: rgba(0,0,0,.87) !important;
+        outline :none;
     }
+    &:focus {
+        outline :none;
+    }
+    &:active {
+        outline :none;
+    }
+}
+
+button {
+    outline :none;
 }
 
 mat-drawer {

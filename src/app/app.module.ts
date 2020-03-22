@@ -7,6 +7,7 @@ import { AppComponent } from './core/components/app.component';
 import { SharedModule } from './shared/shared.module';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { AuthenticationService } from './authentication/services/authentication.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -16,10 +17,16 @@ import { AuthenticationService } from './authentication/services/authentication.
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     SharedModule
   ],
   providers: [
-    AuthenticationService
+    AuthenticationService,
+    ToastrService
   ],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent]

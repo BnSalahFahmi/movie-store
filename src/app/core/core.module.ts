@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { CoreService } from './services/core.service';
+import { CartService } from '../cart/services/cart.service';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { CoreService } from './services/core.service';
     HeaderComponent
   ],
   providers: [
-    CoreService
+    CoreService,
+    CartService
   ]
 })
 export class CoreModule { 
