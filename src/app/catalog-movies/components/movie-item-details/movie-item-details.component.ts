@@ -12,32 +12,29 @@ import { CartService } from 'src/app/cart/services/cart.service';
   <div class="example-card">
     <mat-card-content>
       <div class="row col-lg-12">
-        <div class="col-lg-10 col-md-10 col-sm-10">
-          <p>
-            <b>
-              {{movie.title}}
-            </b>
-          </p>
-          <b>By : </b>
+      <div class="col-lg-6 col-md-6 col-sm-6 align-center">
+        <img mat-card-image class="card-image img-responsive img-thumbnail" src="{{movie.imagePath}}" alt="Photo of a Shiba Inu">
+      </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="align-center movie-info">
+                <span class="movie-title">{{movie.title}}</span>
+            </div>
+          <p><b> By : </b>
           <i *ngFor="let actor of movie.actors">
-          {{actor}}
+          {{actor}} - 
           </i>
-          <p><b>Price : </b> {{movie.price}}</p>
+          </p>
+          <p><b>Price : </b> {{movie.price}} €</p>
           <p><b>Youtube views : </b>{{movie.youtubeViews}}</p>
           <p>
             {{movie.description}}
           </p>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2">
-          <img mat-card-image class="card-image img-responsive img-thumbnail" src="{{movie.imagePath}}" alt="Photo of a Shiba Inu">
+          <div class="align-center card-actions">
+              <button mat-raised-button color="primary" (click)="handleAddToCartClick()"><i class="fa fa-cart-plus"></i> ADD TO CART</button>
+          </div>
         </div>
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-stroked-button color="primary">TRAILER PHOTOS</button>
-      <button mat-stroked-button color="primary" (click)="handleAddToCartClick()">ADD TO MY CART</button>
-      <button mat-stroked-button routerLink="../../list" style="float: right; margin-right: 25px">RETURN</button>
-    </mat-card-actions>
   </div>
 </div>
   `,
@@ -45,14 +42,24 @@ import { CartService } from 'src/app/cart/services/cart.service';
   .example-card {
     padding: 10px;
   }
+  .align-center {
+    text-align: center;
+  }
+  .movie-info {
+    margin-bottom: 20px;
+  }
   .card-image{
-    height: 150px !important;
-    width: 120px !important;
-    position: relative;
-    margin-top: -6px !important;
-    margin: 0px 0px 0px 2px !important;
-    float: right;
-}
+    height: 300px !important;
+    width: 250px !important;
+  }
+  .movie-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 15px;
+  }
+  .card-actions {
+    margin-top: 50px;
+  }
   `]
 })
 export class MovieItemDetailsComponent implements OnInit {

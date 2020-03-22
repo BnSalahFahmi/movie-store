@@ -9,45 +9,54 @@ import { CartService } from 'src/app/cart/services/cart.service';
   template: `
   <div class="example-card" style="margin: 10px">
   <mat-card-content>
-    <div class="row">
-
-      <div class="col-lg-10 col-md-10 col-sm-10">
-        <p>
-          <b>
-            {{serie.title}}
-          </b>
-        </p>
-        
-        <p><b>Price : </b> {{serie.price}}</p>
-        <p><b>Youtube views : </b>{{serie.youtubeViews}}</p>
-        <p>
-          {{serie.description}}
-        </p>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-2">
+    <div class="row col-lg-12">
+      <div class="col-lg-6 col-md-6 col-sm-6 align-center">
         <img mat-card-image class="card-image img-responsive img-thumbnail" src="{{serie.imagePath}}" alt="Photo of a Shiba Inu">
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-56">
+      <div class="align-center serie-info">
+      <span class="serie-title">{{serie.title}}</span>
+      </div>
+      <p><b> By : </b>
+        <i *ngFor="let actor of serie.actors">
+          {{actor}} - 
+        </i>
+      </p>
+      <p><b>Price : </b> {{serie.price}}</p>
+      <p><b>Youtube views : </b>{{serie.youtubeViews}}</p>
+      <p>
+        {{serie.description}}
+      </p>
+      <div class="align-center card-actions">
+          <button mat-raised-button color="primary" (click)="handleAddToCartClick()"><i class="fa fa-cart-plus"></i> ADD TO CART</button>
+      </div>
       </div>
     </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-stroked-button color="primary">TRAILER PHOTOS</button>
-    <button mat-stroked-button color="primary" (click)="handleAddToCartClick()">ADD TO MY CART</button>
-    <button mat-stroked-button routerLink="../../list" style="float: right; margin-right: 25px">RETURN</button>
-  </mat-card-actions>
 </div>
   `,
   styles: [`
   .example-card {
     padding: 10px;
   }
+  .align-center {
+    text-align: center;
+  }
+  .serie-info {
+    margin-bottom: 20px;
+  }
   .card-image{
-    height: 150px !important;
-    width: 120px !important;
-    position: relative;
-    margin-top: -6px !important;
-    margin: 0px 0px 0px 2px !important;
-    float: right;
-}
+    height: 300px !important;
+    width: 250px !important;
+  }
+  .serie-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 15px;
+  }
+  .card-actions {
+    margin-top: 50px;
+  }
   `]
 })
 export class SerieDetailsComponent implements OnInit {

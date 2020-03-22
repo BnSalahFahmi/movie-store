@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
                     </a>
                     <a mat-list-item routerLink="cart" routerLinkActive="active">
                         <fa-icon class="with-margin-right" icon="shopping-cart"></fa-icon>
-                        My Card Collection
+                        My Cart
                     </a>
                 </mat-nav-list>
     </mat-drawer>
@@ -40,7 +40,7 @@ import { Component, OnInit } from '@angular/core';
                                 </button>
                                 <button mat-button class="nav-button" routerLink="cart" routerLinkActive="active">
                                     <fa-icon class="with-margin-right" icon="shopping-cart"></fa-icon>
-                                    My Card Collection
+                                    My Cart
                                 </button>
                             </span>
                         </div>
